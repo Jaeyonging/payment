@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Slider from 'react-slick';
 import '../styles/slick-theme.css'
 import '../styles/slick.css'
@@ -23,14 +23,20 @@ export const Home = () => {
     navigate("/main")
   }
 
+  // useEffect(() => {
+  //   document.body.style.overflow = 'hidden';
+
+  //   return () => {
+  //     document.body.style.overflow = 'auto';
+  //   };
+  // }, []);
+
   return (
     <div>
-      < div>
-        <Slider {...settings} className='absolute w-[100vw] h-[100vh]'>
-          <img src="https://cdn.bonif.co.kr/cmdt/20220628_qRJ_1656371947942_631Kb.jpg" className='w-[100vw] h-[100vh]' onClick={onclick} />
-          <img src="https://cdn.bonif.co.kr/cmdt/20220628_qRJ_1656371947942_631Kb.jpg" className='w-[100vw] h-[100vh]' onClick={onclick} />
-        </Slider>
-      </div >
+      <Slider {...settings} className='absolute w-[100vw] h-[100vh]'>
+        <img src="https://cdn.bonif.co.kr/cmdt/20220628_qRJ_1656371947942_631Kb.jpg" className='w-[100vw] h-[100vh]' onClick={onclick} />
+        <img src="https://cdn.bonif.co.kr/cmdt/20220628_qRJ_1656371947942_631Kb.jpg" className='w-[100vw] h-[100vh]' onClick={onclick} />
+      </Slider>
     </div >
   )
 }

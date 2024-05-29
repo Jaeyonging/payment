@@ -13,6 +13,7 @@ export const CardView = ({ title, imageurl }: Props) => {
     const dispatch = useDispatch<AppDispatch>();
     const navigate = useNavigate()
     const [isSelected, setSelected] = useState(false)
+
     const imagePointerdown = () => {
         setSelected(true)
     }
@@ -31,8 +32,14 @@ export const CardView = ({ title, imageurl }: Props) => {
     }
 
     return (
-        <div className={`flex flex-col w-[40vw] h-[40vw] bg-cardbg-rgb justify-center items-center rounded-[50px] ${isSelected && "bg-[gray]"}`} onPointerDown={imagePointerdown} onPointerUp={imagePointerup} onPointerLeave={imagePointerup} onClick={() => imageClick(imageurl)}>
-            <img src={imageurl} className='w-[30vw]' />
+        <div
+            className={`flex flex-col w-[40vw] h-[40vw] bg-cardbg-rgb justify-center items-center rounded-[50px] ${isSelected ? "bg-gray-500" : ""}`}
+            onPointerDown={imagePointerdown}
+            onPointerUp={imagePointerup}
+            onPointerLeave={imagePointerup}
+            onClick={() => imageClick(imageurl)}
+        >
+            <img src={imageurl} className='w-[30vw]' alt="item" />
             <div className='text-[40px] font-bold'>
                 {title}
             </div>
