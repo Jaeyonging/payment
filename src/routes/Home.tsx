@@ -13,6 +13,9 @@ export const Home = () => {
     slidesToShow: 1,
     slidesToScroll: 1,
     arrows: false,
+    autoplay: true,
+    autoplaySpeed: 1000,
+
   };
 
   const onclick = () => {
