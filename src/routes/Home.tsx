@@ -22,10 +22,10 @@ export const Home = () => {
 
   return (
     <div>
-      < div onClick={onclick}>
+      < div>
         <Slider {...settings} className='absolute w-[100vw] h-[100vh]'>
-          <img src="https://cdn.bonif.co.kr/cmdt/20220628_qRJ_1656371947942_631Kb.jpg" className='w-[100vw] h-[100vh]' />
-          <img src="https://cdn.bonif.co.kr/cmdt/20220628_qRJ_1656371947942_631Kb.jpg" className='w-[100vw] h-[100vh]' />
+          <img src="https://cdn.bonif.co.kr/cmdt/20220628_qRJ_1656371947942_631Kb.jpg" className='w-[100vw] h-[100vh]' onClick={onclick} />
+          <img src="https://cdn.bonif.co.kr/cmdt/20220628_qRJ_1656371947942_631Kb.jpg" className='w-[100vw] h-[100vh]' onClick={onclick} />
         </Slider>
       </div >
     </div >
