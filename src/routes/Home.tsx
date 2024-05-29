@@ -17,7 +17,7 @@ export const Home = () => {
 
   const onclick = () => {
     console.log("click")
-    navigate("/menu")
+    navigate("/main")
   }
 
   return (
