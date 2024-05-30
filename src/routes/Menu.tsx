@@ -113,7 +113,7 @@ export const Menu = () => {
                 {itemState.foods.length > 0 && (
                     <>
                         <div className='fixed bottom-0 w-full teduri p-[20px] bg-[white]'>
-                            <div className='bg-[white] max-h-[200px] overflow-y-auto teduri'>
+                            <div className='bg-[white] max-h-[200px] overflow-y-auto teduri rounded-[20px] p-[20px]'>
                                 {itemState.foods.map((food: any, index: number) => (
                                     <div key={index} className='p-2 border-b border-gray-300'>
                                         <div className='flex flex-row justify-between'>
