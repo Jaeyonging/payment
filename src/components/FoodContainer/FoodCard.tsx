@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { FoodDetail } from '../components/FoodDetail';
+import { FoodDetail } from '../FoodDetail/FoodDetail';
 
 interface Props {
     imageurl: string,
@@ -20,8 +20,8 @@ export const FoodCard = ({ imageurl, foodName, foodPrice }: Props) => {
 
     return (
         <>
-            {isVisible && <FoodDetail closeDetail={closeDetail} />}
-            <div className='flex flex-col text-center justify-between p-[5px] bg-[yellow]' onClick={imageClicked}>
+            {isVisible && <FoodDetail closeDetail={closeDetail} foodName={foodName} price={foodPrice} imageurl={imageurl} />}
+            <div className='flex flex-col text-center justify-between p-[5px]' onClick={imageClicked}>
                 <div>
                     <img src={imageurl} className='w-[30vw] h-[30vw] rounded-[50px]' alt={foodName}></img>
                 </div>

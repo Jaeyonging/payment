@@ -8,13 +8,13 @@ interface Props {
 export const FoodContainer = ({ title }: Props) => {
     return (
         <div className='flex flex-col p-[30px] pt-0 mt-[50px] bg-[white]'>
-            <div className='text-[gray] text-[50px]'>
+            <div className='text-[gray] title'>
                 {title}
             </div>
             <div className='flex flex-row flex-wrap justify-start mt-[20px]'>
                 <FoodCard imageurl='../ice_americano.jpeg' foodName='아이스 아메리카노' foodPrice={3000} />
-                <FoodCard imageurl='../ice_americano.jpeg' foodName='아이스 아메리카노' foodPrice={3000} />
-                <FoodCard imageurl='../ice_americano.jpeg' foodName='아이스 아메리카노' foodPrice={3000} />
+                <FoodCard imageurl='../ice-vanilla.jpeg' foodName='아이스 바닐라' foodPrice={5000} />
+                <FoodCard imageurl='../icelatte.jpeg' foodName='아이스 라데' foodPrice={4500} />
                 <FoodCard imageurl='../ice_americano.jpeg' foodName='아이스 아메리카노' foodPrice={3000} />
             </div>
         </div>

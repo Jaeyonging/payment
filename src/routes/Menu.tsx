@@ -2,7 +2,7 @@ import React, { useRef, useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { RootState } from '../store/configureStore';
 import { IconBar } from '../components/IconBar';
-import { FoodContainer } from '../components/FoodContainer';
+import { FoodContainer } from '../components/FoodContainer/FoodContainer';
 
 interface SectionRefs {
     [key: string]: HTMLDivElement | null;
@@ -10,6 +10,8 @@ interface SectionRefs {
 
 export const Menu = () => {
     const itemState = useSelector((state: RootState) => state.item);
+    console.log(itemState)
+
     const sectionsRef = useRef<SectionRefs>({
         추천메뉴: null,
         커피: null,
@@ -81,7 +83,7 @@ export const Menu = () => {
                     {Object.keys(sectionsRef.current).map((key) => (
                         <div
                             key={key}
-                            className={`text-gray-500 text-[50px] flex-shrink-0 min-w-[250px] text-center p-[20px] cursor-pointer ${activeSection === key ? 'border-b-2 border-black' : ''}`}
+                            className={`text-gray-500 title flex-shrink-0 min-w-[250px] text-center p-[20px] cursor-pointer ${activeSection === key ? 'border-b-2 border-black' : ''}`}
                             onClick={() => scrollToSection(key as keyof SectionRefs)}
                         >
                             {key}
