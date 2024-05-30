@@ -7,7 +7,7 @@ interface Props {
 
 export const FoodContainer = ({ title }: Props) => {
     return (
-        <div className='flex flex-col p-[30px]'>
+        <div className='flex flex-col p-[30px] pt-0 mt-[50px] bg-[white]'>
             <div className='text-[gray] text-[50px]'>
                 {title}
             </div>

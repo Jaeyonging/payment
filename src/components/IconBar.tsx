@@ -11,14 +11,14 @@ export const IconBar = () => {
 
     return (
         <div className='flex justify-between flex-row'>
-            <div className='text-[5vw]' onClick={() => onClick("/main")}>
+            <div className='text-[80px] cursor-pointer' onClick={() => onClick("/main")}>
                 <IoArrowBackOutline />
             </div>
-            <div className='flex flex-row text-[gray]' onClick={() => onClick("/")}>
-                <div className='text-[5vw] mr-[20px]'>
+            <div className='flex flex-row text-[gray] cursor-pointer' onClick={() => onClick("/")}>
+                <div className='text-[80px] mr-[20px]'>
                     <GrPowerReset />
                 </div>
-                <div className='mt-[-5px] text-[4vw]'>
+                <div className='mt-[-5px] text-[60px]'>
                     처음으로
                 </div>
             </div>

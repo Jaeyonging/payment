@@ -33,7 +33,7 @@ export const CardView = ({ title, imageurl }: Props) => {
 
     return (
         <div
-            className={`flex flex-col w-[40vw] h-[40vw] bg-cardbg-rgb justify-center items-center rounded-[50px] ${isSelected ? "bg-gray-500" : ""}`}
+            className={`flex flex-col w-[40vw] h-[40vw] bg-cardbg-rgb justify-center items-center rounded-[50px] cursor-pointer ${isSelected ? "bg-gray-500" : ""}`}
             onPointerDown={imagePointerdown}
             onPointerUp={imagePointerup}
             onPointerLeave={imagePointerup}
