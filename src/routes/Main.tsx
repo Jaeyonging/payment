@@ -1,13 +1,20 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { CardView } from '../components/CardView'
 import { LanguageButton } from '../components/LanguageButton'
+import { useDispatch } from 'react-redux';
+import { AppDispatch } from '../store/configureStore';
+import { resetState } from '../store/itemSlice';
 
 export const Main = () => {
+    const dispatch = useDispatch<AppDispatch>();
     const [selectedLanguage, setSelectedLanguage] = useState('Korean')
-
     const handleLanguageClick = (language: string) => {
         setSelectedLanguage(language)
     }
+
+    useEffect(() => {
+        dispatch(resetState())
+    }, [])
 
     return (
         <div className='flex w-[100vw] h-[100vh] flex-col justify-around  p-[20px]'>

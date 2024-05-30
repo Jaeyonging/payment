@@ -3,8 +3,12 @@ import Slider from 'react-slick';
 import '../styles/slick-theme.css'
 import '../styles/slick.css'
 import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { AppDispatch } from '../store/configureStore';
+import { resetState } from '../store/itemSlice';
 
 export const Home = () => {
+  const dispatch = useDispatch<AppDispatch>();
   const navigate = useNavigate()
   const settings = {
     dots: true,
@@ -23,13 +27,9 @@ export const Home = () => {
     navigate("/main")
   }
 
-  // useEffect(() => {
-  //   document.body.style.overflow = 'hidden';
-
-  //   return () => {
-  //     document.body.style.overflow = 'auto';
-  //   };
-  // }, []);
+  useEffect(() => {
+    dispatch(resetState())
+  })
 
   return (
     <div>

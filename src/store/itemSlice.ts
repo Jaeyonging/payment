@@ -45,9 +45,12 @@ const item = createSlice({
                     state.foods.push({ name, count, price, options });
                 }
             }
+        },
+        resetState(state) {
+            return initialState;
         }
     }
 });
 
-export const { isTakeOut, addCart } = item.actions;
+export const { isTakeOut, addCart, resetState } = item.actions;
 export default item;
