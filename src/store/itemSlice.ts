@@ -24,13 +24,34 @@ const initialState: CartState = {
 
 const testInitialState: CartState = {
     type: 1,
-    foods: [],
+    foods: [
+        {
+            name: "아이스 아메리카노",
+            count: 2,
+            price: 3000,
+            options: [
+                {
+                    optitle: "얼음 양",
+                    opdesc: "많이",
+                },
+                {
+                    optitle: "물량 추가",
+                    opdesc: "많이",
+                },
+                {
+                    optitle: "샷 추가",
+                    opdesc: "많이",
+                },
+            ],
+        },
+
+    ],
 
 };
 
 const item = createSlice({
     name: 'item',
-    initialState: testInitialState,
+    initialState: initialState,
     reducers: {
         isTakeOut(state, action: PayloadAction<number>) {
             state.type = action.payload;
