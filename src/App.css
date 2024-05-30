@@ -34,6 +34,10 @@ html, body {
     scrollbar-width: none;
 }
 
+.teduri{
+    border: 2px solid #000000;
+}
+
 .title{
     font-size: 50px
 }

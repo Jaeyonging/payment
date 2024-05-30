@@ -53,15 +53,15 @@ export const FoodDetail = ({ closeDetail, imageurl, foodName, price }: FoodDetai
     }, []);
 
     return (
-        <div className='fixed inset-0 flex items-center justify-center w-[100vw] h-[100vh] bg-transparent z-50'>
-            <div className='flex flex-col items-center w-[95vw] h-[95vh] bg-[gray] rounded-[50px] overflow-y-auto no-scrollbar'>
+        <div className='fixed inset-0 flex items-center justify-center w-[100vw] h-[100vh] bg-transparent z-50 '>
+            <div className='flex flex-col items-center w-[95vw] h-[95vh] bg-[white] teduri rounded-[50px] overflow-y-auto no-scrollbar'>
                 <button onClick={closeDetail} className='absolute top-[-30px] right-5 text-black text-[100px]'>
                     X
                 </button>
                 <div className='flex justify-around items-center w-full p-[50px]'>
                     <FoodIntro title={foodName} price={price} imageurl={imageurl}></FoodIntro>
                 </div>
-                <div className='flex flex-col title bg-[white] w-[90vw] rounded-[50px] p-[20px] text-center'>
+                <div className='flex flex-col title teduri w-[90vw] rounded-[50px] p-[20px] text-center'>
                     <div className='border-b-2 border-[black]'>옵션</div>
                     <OptionView
                         title="얼음양"
@@ -102,9 +102,9 @@ export const FoodDetail = ({ closeDetail, imageurl, foodName, price }: FoodDetai
                         </button>
                     </div>
                 </div>
-                <div className='flex w-full flex-row justify-around mt-[20px] mb-[20px]'>
-                    <button className='w-[100px] border-2 border-[black]' onClick={closeDetail}>취소</button>
-                    <button className='w-[100px] border-2 border-[black]' onClick={addCartClicked}>담기</button>
+                <div className='flex w-full flex-row justify-around mt-[20px] mb-[20px] text-[30px]'>
+                    <button className='w-[200px] border-2 border-[black] p-[20px] rounded-[20px]' onClick={closeDetail}>취소</button>
+                    <button className='w-[200px] border-2 border-[black] p-[20px] rounded-[20px]' onClick={addCartClicked}>담기</button>
                 </div>
             </div>
         </div>

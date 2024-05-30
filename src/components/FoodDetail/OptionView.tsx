@@ -22,27 +22,18 @@ export const OptionView = ({ title, option1, option2, option3, onOptionChange, d
     };
 
     return (
-        <div className="semi-font self-start w-full text-start bg-[gray] p-[30px] rounded-[25px] mt-[20px]">
+        <div className="semi-font self-start w-full text-start teduri p-[30px] rounded-[25px] mt-[20px]">
             {title}
             <div className="flex flex-row justify-around text-center semi-font">
-                <div
-                    className={`p-[30px] ${isSelected === option1 ? 'bg-[blue]' : 'bg-[yellow]'}`}
-                    onClick={() => handleOptionClick(option1)}
-                >
+                <div className={`p-[30px] teduri rounded-[20px] ${isSelected === option1 ? 'bg-selected-color' : ''}`} onClick={() => handleOptionClick(option1)}>
                     <img src="../ice_americano.jpeg" className="w-[200px] h-[300px] mb-[20px]" alt="option1" />
                     {option1}
                 </div>
-                <div
-                    className={`p-[30px] ${isSelected === option2 ? 'bg-[blue]' : 'bg-[yellow]'}`}
-                    onClick={() => handleOptionClick(option2)}
-                >
+                <div className={`p-[30px] teduri rounded-[20px] ${isSelected === option2 ? 'bg-selected-color' : ''}`} onClick={() => handleOptionClick(option2)}>
                     <img src="../ice_americano.jpeg" className="w-[200px] h-[300px] mb-[20px]" alt="option2" />
                     {option2}
                 </div>
-                <div
-                    className={`p-[30px] ${isSelected === option3 ? 'bg-[blue]' : 'bg-[yellow]'}`}
-                    onClick={() => handleOptionClick(option3)}
-                >
+                <div className={`p-[30px] teduri rounded-[20px] ${isSelected === option3 ? 'bg-selected-color' : ''}`} onClick={() => handleOptionClick(option3)}>
                     <img src="../ice_americano.jpeg" className="w-[200px] h-[300px] mb-[20px]" alt="option3" />
                     {option3}
                 </div>

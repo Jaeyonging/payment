@@ -10,7 +10,6 @@ interface SectionRefs {
 
 export const Menu = () => {
     const itemState = useSelector((state: RootState) => state.item);
-    const [items, setItems] = useState<any>()
     const sectionsRef = useRef<SectionRefs>({
         추천메뉴: null,
         커피: null,
@@ -20,15 +19,6 @@ export const Menu = () => {
         디저트: null,
         케이크: null,
     });
-
-    useEffect(() => {
-        if (itemState.foods[0]) {
-            setItems(itemState.foods)
-            console.log(itemState.foods)
-        } else {
-            console.log('no')
-        }
-    }, [itemState.foods]);
 
     const [activeSection, setActiveSection] = useState<keyof SectionRefs | null>(null);
 
@@ -122,25 +112,35 @@ export const Menu = () => {
                 </div>
                 {itemState.foods.length > 0 && (
                     <>
-                        <div className='fixed bottom-0 w-full bg-white p-[20px]'>
-                            {itemState.foods.map((food: any, index: number) => (
-                                <div key={index} className='p-2 border-b border-gray-300'>
-                                    <div className='flex flex-row'>
-                                        {food.name}
-                                        {food.count}
-                                        {food.options.map((option: any, index: number) => (
-                                            <div key={index}>
-                                                {option.optitle}
-                                                {option.opdesc}
+                        <div className='fixed bottom-0 w-full teduri p-[20px] bg-[white]'>
+                            <div className='bg-[white] max-h-[200px] overflow-y-auto teduri'>
+                                {itemState.foods.map((food: any, index: number) => (
+                                    <div key={index} className='p-2 border-b border-gray-300'>
+                                        <div className='flex flex-row justify-between'>
+                                            <div>
+                                                {food.name}
                                             </div>
-                                        ))}
+                                            <div>
+                                                {food.count}
+                                            </div>
+                                            {food.options.map((option: any, index: number) => (
+                                                <div key={index} className='flex flex-row'>
+                                                    <div>
+                                                        {option.optitle}
+                                                    </div>
+                                                    <div>
+                                                        {option.opdesc}
+                                                    </div>
+                                                </div>
+                                            ))}
+                                        </div>
                                     </div>
-                                </div>
-                            ))}
-                        </div>
-                        <div className='fixed flex justify-around bottom-0 w-[90vw] ml-[5vw] bg-[red]'>
-                            <button>취소하기</button>
-                            <button>결제하기</button>
+                                ))}
+                            </div>
+                            <div className='flex justify-around w-[90vw] ml-[5vw] mt-[20px]'>
+                                <button className='w-[200px] border-2 border-[black] p-[20px] rounded-[20px]'>취소하기</button>
+                                <button className='w-[200px] border-2 border-[black] p-[20px] rounded-[20px]'>결제하기</button>
+                            </div>
                         </div>
                     </>
 

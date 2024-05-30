@@ -8,7 +8,8 @@ export default {
     extend: {
       colors: {
         "cardbg-rgb": "rgb(235, 235, 235)",
-        "flag-rgba": "rgba(0, 17, 255,0.2)"
+        "flag-rgba": "rgba(0, 17, 255,0.2)",
+        "selected-color": "rgba(209, 209, 209)"
       },
       screens: {
         sm: { min: "0px", max: "640px" },
