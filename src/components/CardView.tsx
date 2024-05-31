@@ -40,7 +40,7 @@ export const CardView = ({ title, imageurl }: Props) => {
             onClick={() => imageClick(imageurl)}
         >
             <img src={imageurl} className='w-[30vw]' alt="item" />
-            <div className='text-[40px] font-bold'>
+            <div className='text-[40px] font-bold sm:text-[20px]'>
                 {title}
             </div>
         </div>

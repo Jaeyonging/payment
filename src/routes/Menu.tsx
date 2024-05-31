@@ -55,7 +55,7 @@ export const Menu = () => {
     const scrollToSection = (section: keyof SectionRefs) => {
         const sectionElement = sectionsRef.current[section];
         if (sectionElement) {
-            const headerOffset = 200;
+            const headerOffset = getHeaderOffset();
             const elementPosition = sectionElement.getBoundingClientRect().top;
             const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
 
@@ -64,6 +64,14 @@ export const Menu = () => {
                 behavior: 'smooth'
             });
         }
+    };
+
+    const getHeaderOffset = () => {
+        if (window.matchMedia('(max-width: 640px)').matches) {
+            console.log("mobile")
+            return 120;
+        }
+        return 200;
     };
 
     useEffect(() => {
@@ -110,7 +118,7 @@ export const Menu = () => {
                     {Object.keys(sectionsRef.current).map((key) => (
                         <div
                             key={key}
-                            className={`text-gray-500 title flex-shrink-0 min-w-[250px] text-center p-[20px] cursor-pointer ${activeSection === key ? 'border-b-2 border-black' : ''}`}
+                            className={`text-gray-500 title flex-shrink-0 min-w-[250px] text-center p-[20px] sm:text-[20px] sm:min-w-[100px] cursor-pointer ${activeSection === key ? 'border-b-2 border-black' : ''}`}
                             onClick={() => scrollToSection(key as keyof SectionRefs)}
                         >
                             {key}
@@ -142,23 +150,23 @@ export const Menu = () => {
                 </div>
                 {itemState.foods.length > 0 && (
                     <>
-                        <div className='fixed bottom-0 w-full teduri p-[20px] bg-[white]'>
-                            <div className='bg-[white] max-h-[200px] overflow-y-auto teduri rounded-[20px] p-[20px]'>
+                        <div className='fixed bottom-0 w-full teduri p-[20px] bg-[white] sm:p-[5px]'>
+                            <div className='bg-[white] max-h-[200px] overflow-y-auto teduri rounded-[20px] p-[20px] sm:p-0 no-scrollbar'>
                                 {itemState.foods.map((food: any, index: number) => (
                                     <div key={index} className='p-2 border-b border-gray-300 text-center'>
                                         <div className='flex flex-row justify-around text-[20px]'>
-                                            <CountButton title='X' onClick={() => deleteItemClicked(food.name, food.options)}></CountButton>
-                                            <div className='w-[20vw] break-keep'>
+                                            <CountButton title='X' onClick={() => deleteItemClicked(food.name, food.options)} />
+                                            <div className='w-[20vw] break-keep sm:text-[10px]'>
                                                 {food.name}
                                             </div>
-                                            <div className='flex flex-row justify-around w-[15vw] break-keep'>
-                                                <CountButton title='-' onClick={() => countItemClicked(food.name, food.options, -1)}></CountButton>
+                                            <div className='flex flex-row justify-around w-[15vw] break-keep sm:text-[10px]'>
+                                                <CountButton title='-' onClick={() => countItemClicked(food.name, food.options, -1)} />
                                                 {food.count}
-                                                <CountButton title='+' onClick={() => countItemClicked(food.name, food.options, 1)}></CountButton>
+                                                <CountButton title='+' onClick={() => countItemClicked(food.name, food.options, 1)} />
                                             </div>
                                             {food.options.map((option: any, index: number) => (
                                                 <div key={index} className='flex flex-row'>
-                                                    <div className='w-[15vw] break-keep'>
+                                                    <div className='w-[15vw] break-keep sm:text-[10px]'>
                                                         {option.optitle}: {option.opdesc}
                                                     </div>
                                                 </div>
@@ -167,15 +175,15 @@ export const Menu = () => {
                                     </div>
                                 ))}
                             </div>
-                            <div className='flex justify-around w-[90vw] ml-[5vw] mt-[20px]'>
-                                <CustomButton title='취소하기' onClick={cancelClicked}></CustomButton>
+                            <div className='flex justify-around w-[90vw] ml-[5vw] mt-[20px] sm:ml-0'>
+                                <CustomButton title='취소' onClick={cancelClicked}></CustomButton>
                                 <div className='flex flex-col border-2 border-[black] w-[100px] text-center justify-center text-[30px]'>
                                     가격
                                     <div className='text-[20px]'>
                                         {totalPrice}원
                                     </div>
                                 </div>
-                                <CustomButton title='결제하기' onClick={payClicked}></CustomButton>
+                                <CustomButton title='결제' onClick={payClicked}></CustomButton>
                             </div>
                         </div>
                     </>

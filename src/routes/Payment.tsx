@@ -9,9 +9,9 @@ export const Payment = () => {
     const totalPrice = useSelector(selectTotalPrice);
 
     return (
-        <div className='flex flex-col w-full p-10 justify-around h-[100vh]'>
-            <div className='flex flex-col justify-around teduri p-10 rounded-[20px]'>
-                <div className='text-[30px] text-[gray] font-bold mb-[20px]'>
+        <div className='flex flex-col w-full p-10 justify-around h-[100vh] sm:p-[10px]'>
+            <div className='flex flex-col justify-around teduri p-10 rounded-[20px] sm:p-[10px]'>
+                <div className='text-[30px] text-[gray] font-bold mb-[20px] sm:mb-[5px] sm:text-[20px]'>
                     결제방법
                 </div>
                 <div className='flex flex-row justify-around text-center'>
@@ -21,26 +21,26 @@ export const Payment = () => {
 
                 </div>
             </div>
-            <div className='flex flex-col justify-around teduri p-10 mt-[20px] rounded-[20px]'>
-                <div className='text-[30px] text-[gray] font-bold mb-[20px]'>
-                    할인
+            <div className='flex flex-col justify-around teduri p-10 mt-[20px] rounded-[20px] sm:p-[10px]'>
+                <div className='text-[30px] text-[gray] font-bold mb-[20px] sm:text-[20px]'>
+                    통신사 할인
                 </div>
                 <div className='flex flex-row justify-around text-center'>
-                    <PaymentCardView title='LG 할인' imageurl='../membership/lg.svg' teduri={true} />
-                    <PaymentCardView title='KT 할인' imageurl='../membership/kt.svg' teduri={true} />
-                    <PaymentCardView title='SKT 할인' imageurl='../membership/tworld.svg' teduri={true} />
+                    <PaymentCardView title='LG' imageurl='../membership/lg.svg' teduri={true} />
+                    <PaymentCardView title='KT' imageurl='../membership/kt.svg' teduri={true} />
+                    <PaymentCardView title='SKT' imageurl='../membership/tworld.svg' teduri={true} />
                 </div>
             </div>
-            <div className='flex flex-col justify-around teduri p-10 mt-[20px] rounded-[20px]'>
-                <div className='text-[30px] text-[gray] font-bold mb-[20px]'>
+            <div className='flex flex-col justify-around teduri p-10 mt-[20px] rounded-[20px] sm:p-[10px]'>
+                <div className='text-[30px] text-[gray] font-bold mb-[20px] sm:text-[20px]'>
                     주문내역
                 </div>
                 {
                     itemState.foods.length > 0 && (
-                        <div className='flex flex-col teduri rounded-[10px] p-[20px] text-[20px]'>
+                        <div className='flex flex-col teduri rounded-[10px] p-[20px] text-[20px] sm:p-[10px] sm:text-[10px]'>
                             {itemState.foods.map((food: any, index: number) => (
                                 <div key={index} className='flex flex-row justify-around text-center border-b-2 border-[gray] mb-[20px]'>
-                                    <div className='w-[20vw] break-keep'>
+                                    <div className='w-[20vw] break-keep '>
                                         {food.name}
                                     </div>
                                     <div>
