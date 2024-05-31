@@ -58,7 +58,7 @@ export const Payment = () => {
                         </div>
                     )
                 }
-                <div className=' self-end mt-[20px] text-[30px] font-bold'>
+                <div className=' self-end mt-[20px] text-[30px] font-bold sm:text-[20px]'>
                     가격: {totalPrice}
 
                 </div>
