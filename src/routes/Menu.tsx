@@ -1,14 +1,21 @@
 import React, { useRef, useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
-import { RootState } from '../store/configureStore';
+import { useDispatch, useSelector } from 'react-redux';
+import { AppDispatch, RootState } from '../store/configureStore';
 import { IconBar } from '../components/IconBar';
 import { FoodContainer } from '../components/FoodContainer/FoodContainer';
+import { useNavigate } from 'react-router-dom';
+import { CustomButton } from '../components/Button/CustomButton';
+import { resetState, removeCart, addCart } from '../store/itemSlice';
+import { CountButton } from '../components/Button/CountButton';
+import { Options } from '../types/type';
 
 interface SectionRefs {
     [key: string]: HTMLDivElement | null;
 }
 
 export const Menu = () => {
+    const navigate = useNavigate();
+    const dispatch = useDispatch<AppDispatch>();
     const itemState = useSelector((state: RootState) => state.item);
     const sectionsRef = useRef<SectionRefs>({
         추천메뉴: null,
@@ -19,6 +26,28 @@ export const Menu = () => {
         디저트: null,
         케이크: null,
     });
+
+    const cancelClicked = () => {
+        dispatch(resetState());
+    };
+
+    const deleteItemClicked = (name: string, options: Options[]) => {
+        dispatch(removeCart({ name, options }));
+    };
+
+    const countItemClicked = (name: string, options: Options[], num: number) => {
+        const item = itemState.foods.find(item =>
+            item.name === name &&
+            JSON.stringify(item.options) === JSON.stringify(options)
+        );
+        if (item) {
+            dispatch(addCart({ name, count: num, price: item.price, options }));
+        }
+    };
+
+    const payClicked = () => {
+        navigate("/payment");
+    };
 
     const [activeSection, setActiveSection] = useState<keyof SectionRefs | null>(null);
 
@@ -115,21 +144,21 @@ export const Menu = () => {
                         <div className='fixed bottom-0 w-full teduri p-[20px] bg-[white]'>
                             <div className='bg-[white] max-h-[200px] overflow-y-auto teduri rounded-[20px] p-[20px]'>
                                 {itemState.foods.map((food: any, index: number) => (
-                                    <div key={index} className='p-2 border-b border-gray-300'>
-                                        <div className='flex flex-row justify-between'>
-                                            <div>
+                                    <div key={index} className='p-2 border-b border-gray-300 text-center'>
+                                        <div className='flex flex-row justify-around text-[20px]'>
+                                            <CountButton title='X' onClick={() => deleteItemClicked(food.name, food.options)}></CountButton>
+                                            <div className='w-[20vw] break-keep'>
                                                 {food.name}
                                             </div>
-                                            <div>
+                                            <div className='flex flex-row justify-around w-[15vw] break-keep'>
+                                                <CountButton title='-' onClick={() => countItemClicked(food.name, food.options, -1)}></CountButton>
                                                 {food.count}
+                                                <CountButton title='+' onClick={() => countItemClicked(food.name, food.options, 1)}></CountButton>
                                             </div>
                                             {food.options.map((option: any, index: number) => (
                                                 <div key={index} className='flex flex-row'>
-                                                    <div>
-                                                        {option.optitle}
-                                                    </div>
-                                                    <div>
-                                                        {option.opdesc}
+                                                    <div className='w-[15vw] break-keep'>
+                                                        {option.optitle}: {option.opdesc}
                                                     </div>
                                                 </div>
                                             ))}
@@ -138,13 +167,11 @@ export const Menu = () => {
                                 ))}
                             </div>
                             <div className='flex justify-around w-[90vw] ml-[5vw] mt-[20px]'>
-                                <button className='w-[200px] border-2 border-[black] p-[20px] rounded-[20px]'>취소하기</button>
-                                <button className='w-[200px] border-2 border-[black] p-[20px] rounded-[20px]'>결제하기</button>
+                                <CustomButton title='취소하기' onClick={cancelClicked}></CustomButton>
+                                <CustomButton title='결제하기' onClick={payClicked}></CustomButton>
                             </div>
                         </div>
                     </>
-
-
                 )}
             </div>
         </div>

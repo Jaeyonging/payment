@@ -4,6 +4,8 @@ import { OptionView } from './OptionView';
 import { useDispatch } from 'react-redux';
 import { AppDispatch } from '../../store/configureStore';
 import { addCart } from '../../store/itemSlice';
+import { CustomButton } from '../Button/CustomButton';
+import { CountButton } from '../Button/CountButton';
 
 interface FoodDetailProps {
     closeDetail: () => void;
@@ -91,20 +93,16 @@ export const FoodDetail = ({ closeDetail, imageurl, foodName, price }: FoodDetai
                 <div className='bg-[white] w-[90vw] rounded-[50px] text-center title p-[20px] mt-[20px]'>
                     <div className='border-b-2 border-[black]'>갯수 추가</div>
                     <div className='flex flex-row justify-center semi-font mt-[20px]'>
-                        <button onClick={() => countbuttonClicked(-1)}>
-                            -
-                        </button>
+                        <CountButton onClick={() => countbuttonClicked(-1)} title='-'></CountButton>
                         <div className='border-2 border-[black] w-[100px] ml-[20px] mr-[20px]'>
                             {count}
                         </div>
-                        <button onClick={() => countbuttonClicked(1)}>
-                            +
-                        </button>
+                        <CountButton onClick={() => countbuttonClicked(+1)} title='+'></CountButton>
                     </div>
                 </div>
                 <div className='flex w-full flex-row justify-around mt-[20px] mb-[20px] text-[30px]'>
-                    <button className='w-[200px] border-2 border-[black] p-[20px] rounded-[20px]' onClick={closeDetail}>취소</button>
-                    <button className='w-[200px] border-2 border-[black] p-[20px] rounded-[20px]' onClick={addCartClicked}>담기</button>
+                    <CustomButton title='취소' onClick={closeDetail}></CustomButton>
+                    <CustomButton title='담기' onClick={addCartClicked}></CustomButton>
                 </div>
             </div>
         </div>

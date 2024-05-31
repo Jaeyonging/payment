@@ -1,19 +1,9 @@
 import { configureStore, createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { FoodItem, Options } from "../types/type";
 
-interface Options {
-    optitle: string;
-    opdesc: string;
-}
-
-interface FoodItem {
-    name: string;
-    count: number;
-    price: number;
-    options: Options[];
-}
 
 interface CartState {
-    type: number;
+    type: number; //먹고 가기, 포장하기
     foods: FoodItem[];
 }
 
@@ -44,14 +34,12 @@ const testInitialState: CartState = {
                 },
             ],
         },
-
     ],
-
 };
 
 const item = createSlice({
     name: 'item',
-    initialState: initialState,
+    initialState: testInitialState,
     reducers: {
         isTakeOut(state, action: PayloadAction<number>) {
             state.type = action.payload;
@@ -73,11 +61,17 @@ const item = createSlice({
                 }
             }
         },
+        removeCart(state, action: PayloadAction<{ name: string; options: Options[] }>) {
+            state.foods = state.foods.filter(item =>
+                item.name !== action.payload.name ||
+                JSON.stringify(item.options) !== JSON.stringify(action.payload.options)
+            );
+        },
         resetState(state) {
             return initialState;
         }
     }
 });
 
-export const { isTakeOut, addCart, resetState } = item.actions;
+export const { isTakeOut, addCart, removeCart, resetState } = item.actions;
 export default item;

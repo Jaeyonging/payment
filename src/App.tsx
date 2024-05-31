@@ -3,6 +3,7 @@ import { Route, Routes } from "react-router-dom";
 import { Home } from "./routes/Home";
 import { Main } from "./routes/Main";
 import { Menu } from "./routes/Menu";
+import { Payment } from "./routes/Payment";
 import './App.css'
 
 function App() {
@@ -12,8 +13,9 @@ function App() {
         <Route path="/" element={<Home></Home>} />
         <Route path="/main" element={<Main></Main>} />
         <Route path="/menu" element={<Menu></Menu>} />
-        <Route path="/detail/:id" element={<Home></Home>} />
-        <Route path="/cart" element={<Home></Home>} />
+        <Route path="/payment" element={<Payment></Payment>} />
+
+
       </Routes>
     </Suspense>
   );

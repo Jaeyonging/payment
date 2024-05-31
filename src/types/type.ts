@@ -1,14 +1,16 @@
-export interface QTest {
-    question: string
-    answer01: string
-    answer02: string
-    answer03: string
-    ansewr04: string
-    answer05: string
+export interface Options {
+    optitle: string;
+    opdesc: string;
 }
 
+export interface FoodItem {
+    name: string;
+    count: number;
+    price: number;
+    options: Options[];
+}
 
-export const QMap: Map<string, string> = new Map([
-
-
-]);
+export interface CartState {
+    type: number; //먹고 가기, 포장하기
+    foods: FoodItem[];
+}
