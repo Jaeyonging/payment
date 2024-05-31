@@ -2,6 +2,7 @@ import React from 'react'
 import { IoArrowBackOutline } from "react-icons/io5";
 import { GrPowerReset } from "react-icons/gr";
 import { useNavigate } from 'react-router-dom';
+import { FaHome } from "react-icons/fa";
 
 interface Props {
     url: string
@@ -20,11 +21,11 @@ export const IconBar = ({ url }: Props) => {
             </div>
             <div className='flex flex-row text-[gray] cursor-pointer' onClick={() => onClick("/")}>
                 <div className='text-[80px] mr-[20px] sm:text-[50px]'>
-                    <GrPowerReset />
+                    <FaHome />
                 </div>
-                <div className='mt-[-5px] text-[60px] sm:text-[20px] sm:mt-[10px]'>
+                {/* <div className='mt-[-5px] text-[60px] sm:text-[20px] sm:mt-[10px] sm:hidden'>
                     처음으로
-                </div>
+                </div> */}
             </div>
         </div>
     )
