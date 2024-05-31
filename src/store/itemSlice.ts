@@ -59,7 +59,7 @@ const testInitialState: CartState = {
 
 const item = createSlice({
     name: 'item',
-    initialState: testInitialState,
+    initialState: initialState,
     reducers: {
         isTakeOut(state, action: PayloadAction<number>) {
             state.type = action.payload;

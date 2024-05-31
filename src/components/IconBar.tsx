@@ -3,15 +3,19 @@ import { IoArrowBackOutline } from "react-icons/io5";
 import { GrPowerReset } from "react-icons/gr";
 import { useNavigate } from 'react-router-dom';
 
-export const IconBar = () => {
+interface Props {
+    url: string
+}
+
+export const IconBar = ({ url }: Props) => {
     const navigate = useNavigate()
-    const onClick = (url: string) => {
-        navigate(url)
+    const onClick = (url2: string) => {
+        navigate(url2)
     }
 
     return (
         <div className='flex justify-between flex-row'>
-            <div className='text-[80px] cursor-pointer sm:text-[50px]' onClick={() => onClick("/main")}>
+            <div className='text-[80px] cursor-pointer sm:text-[50px]' onClick={() => onClick(url)}>
                 <IoArrowBackOutline />
             </div>
             <div className='flex flex-row text-[gray] cursor-pointer' onClick={() => onClick("/")}>

@@ -112,7 +112,7 @@ export const Menu = () => {
         <div>
             <div className="flex flex-col p-[10px 0] sticky top-0 z-50 bg-white">
                 <div>
-                    <IconBar />
+                    <IconBar url='/main' />
                 </div>
                 <div className='flex flex-row overflow-x-auto no-scrollbar border-b-2 border-gray-400'>
                     {Object.keys(sectionsRef.current).map((key) => (
@@ -151,7 +151,7 @@ export const Menu = () => {
                 {itemState.foods.length > 0 && (
                     <>
                         <div className='fixed bottom-0 w-full teduri p-[20px] bg-[white] sm:p-[5px]'>
-                            <div className='bg-[white] max-h-[200px] overflow-y-auto teduri rounded-[20px] p-[20px] sm:p-0 no-scrollbar'>
+                            <div className='bg-[white] max-h-[200px] overflow-y-auto teduri rounded-[20px] sm:max-h-[170px] p-[20px] sm:p-0 no-scrollbar'>
                                 {itemState.foods.map((food: any, index: number) => (
                                     <div key={index} className='p-2 border-b border-gray-300 text-center'>
                                         <div className='flex flex-row justify-around text-[20px]'>
@@ -175,11 +175,11 @@ export const Menu = () => {
                                     </div>
                                 ))}
                             </div>
-                            <div className='flex justify-around w-[90vw] ml-[5vw] mt-[20px] sm:ml-0'>
+                            <div className='flex justify-around w-[90vw] ml-[5vw] mt-[20px] sm:m-auto sm:mt-[20px]'>
                                 <CustomButton title='취소' onClick={cancelClicked}></CustomButton>
-                                <div className='flex flex-col border-2 border-[black] w-[100px] text-center justify-center text-[30px]'>
+                                <div className='flex flex-col border-2 border-[black] w-[100px] text-center justify-center text-[30px] sm:text-[20px]'>
                                     가격
-                                    <div className='text-[20px]'>
+                                    <div className='text-[20px] sm:text-[15px]'>
                                         {totalPrice}원
                                     </div>
                                 </div>

@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 import { RootState } from '../store/configureStore';
 import { selectTotalPrice } from '../store/itemSlice';
 import { PaymentCardView } from '../components/PaymentCardView';
+import { IconBar } from '../components/IconBar';
 
 export const Payment = () => {
     const itemState = useSelector((state: RootState) => state.item);
@@ -10,6 +11,7 @@ export const Payment = () => {
 
     return (
         <div className='flex flex-col w-full p-10 justify-around h-[100vh] sm:p-[10px]'>
+            <IconBar url='/menu' />
             <div className='flex flex-col justify-around teduri p-10 rounded-[20px] sm:p-[10px]'>
                 <div className='text-[30px] text-[gray] font-bold mb-[20px] sm:mb-[5px] sm:text-[20px]'>
                     결제방법
