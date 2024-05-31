@@ -91,7 +91,7 @@ export const FoodDetail = ({ closeDetail, imageurl, foodName, price }: FoodDetai
                     />
                 </div>
                 <div className='bg-[white] w-[90vw] rounded-[50px] text-center title p-[20px] mt-[20px]'>
-                    <div className='border-b-2 border-[black]'>갯수 추가</div>
+                    <div className='border-b-2 border-[black]'>갯수</div>
                     <div className='flex flex-row justify-center semi-font mt-[20px]'>
                         <CountButton onClick={() => countbuttonClicked(-1)} title='-'></CountButton>
                         <div className='border-2 border-[black] w-[100px] ml-[20px] mr-[20px]'>

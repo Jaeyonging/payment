@@ -5,7 +5,7 @@ import { IconBar } from '../components/IconBar';
 import { FoodContainer } from '../components/FoodContainer/FoodContainer';
 import { useNavigate } from 'react-router-dom';
 import { CustomButton } from '../components/Button/CustomButton';
-import { resetState, removeCart, addCart } from '../store/itemSlice';
+import { resetState, removeCart, addCart, selectTotalPrice } from '../store/itemSlice';
 import { CountButton } from '../components/Button/CountButton';
 import { Options } from '../types/type';
 
@@ -16,6 +16,7 @@ interface SectionRefs {
 export const Menu = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch<AppDispatch>();
+    const totalPrice = useSelector(selectTotalPrice);
     const itemState = useSelector((state: RootState) => state.item);
     const sectionsRef = useRef<SectionRefs>({
         추천메뉴: null,
@@ -168,6 +169,12 @@ export const Menu = () => {
                             </div>
                             <div className='flex justify-around w-[90vw] ml-[5vw] mt-[20px]'>
                                 <CustomButton title='취소하기' onClick={cancelClicked}></CustomButton>
+                                <div className='flex flex-col border-2 border-[black] w-[100px] text-center justify-center text-[30px]'>
+                                    가격
+                                    <div className='text-[20px]'>
+                                        {totalPrice}원
+                                    </div>
+                                </div>
                                 <CustomButton title='결제하기' onClick={payClicked}></CustomButton>
                             </div>
                         </div>

@@ -1,5 +1,6 @@
-import { configureStore, createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { configureStore, createSelector, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { FoodItem, Options } from "../types/type";
+import { RootState } from "./configureStore";
 
 
 interface CartState {
@@ -17,6 +18,25 @@ const testInitialState: CartState = {
     foods: [
         {
             name: "아이스 아메리카노",
+            count: 2,
+            price: 3000,
+            options: [
+                {
+                    optitle: "얼음 양",
+                    opdesc: "많이",
+                },
+                {
+                    optitle: "물량 추가",
+                    opdesc: "많이",
+                },
+                {
+                    optitle: "샷 추가",
+                    opdesc: "많이",
+                },
+            ],
+        },
+        {
+            name: "아이스 바닐라",
             count: 2,
             price: 3000,
             options: [
@@ -72,6 +92,15 @@ const item = createSlice({
         }
     }
 });
+
+const selectFoods = (state: RootState) => state.item.foods;
+
+export const selectTotalPrice = createSelector(
+    [selectFoods],
+    (foods) =>
+        foods.reduce((total, food) => total + (food.price * food.count), 0)
+);
+
 
 export const { isTakeOut, addCart, removeCart, resetState } = item.actions;
 export default item;

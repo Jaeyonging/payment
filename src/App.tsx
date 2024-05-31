@@ -4,6 +4,7 @@ import { Home } from "./routes/Home";
 import { Main } from "./routes/Main";
 import { Menu } from "./routes/Menu";
 import { Payment } from "./routes/Payment";
+import { PayProgress } from "./routes/PayProgress";
 import './App.css'
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
         <Route path="/main" element={<Main></Main>} />
         <Route path="/menu" element={<Menu></Menu>} />
         <Route path="/payment" element={<Payment></Payment>} />
+        <Route path="/payprogress/:type" element={<PayProgress></PayProgress>} />
 
 
       </Routes>

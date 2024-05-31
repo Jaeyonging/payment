@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { CardView } from '../components/CardView'
-import { LanguageButton } from '../components/LanguageButton'
+import { LanguageButton } from '../components/Button/LanguageButton'
 import { useDispatch } from 'react-redux';
 import { AppDispatch } from '../store/configureStore';
 import { resetState } from '../store/itemSlice';
