@@ -15,6 +15,7 @@ export const SideMenu = ({ isOpen, setOpen }: Props) => {
         setOpen(false)
     }
 
+
     const [isDetailOpen, setDetailOpen] = useState("")
     const detailMenu = (menu: string) => {
         setDetailOpen(menu)
@@ -97,6 +98,12 @@ export const SideMenu = ({ isOpen, setOpen }: Props) => {
                                 </div>
                             </>
                         }
+                    </div>
+                    <div className='flex flex-col'>
+                        <div className='flex flex-row mt-[10vh] sm:text-[20px] cursor-pointer' onClick={() => navigate("login")}>
+                            로그아웃
+                        </div>
+
                     </div>
                 </div>
             </div>
