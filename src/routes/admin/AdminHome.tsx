@@ -1,11 +1,12 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { GiHamburgerMenu } from "react-icons/gi";
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, ResponsiveContainer, BarChart, Tooltip, Legend, Bar } from 'recharts';
 import { SideMenu } from '../../components/Admin/SideMenu';
 import { DragBarChart } from '../../components/Admin/DragBarChart';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../store/configureStore';
 
 export const AdminHome = () => {
-    const dropAreaRef = useRef(null)
     const [isSideMenuOpen, setSideMenuOpen] = useState(false);
 
     const menuOnclicked = () => {

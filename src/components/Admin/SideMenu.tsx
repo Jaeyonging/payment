@@ -1,8 +1,10 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { IoCloseSharp } from "react-icons/io5";
 import { IoIosArrowDown } from "react-icons/io";
 import { IoIosArrowUp } from "react-icons/io";
 import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../store/configureStore';
 
 interface Props {
     isOpen: boolean
@@ -11,6 +13,8 @@ interface Props {
 
 export const SideMenu = ({ isOpen, setOpen }: Props) => {
     const navigate = useNavigate()
+    const userState = useSelector((state: RootState) => state.user);
+
     const xOnClicked = () => {
         setOpen(false)
     }
@@ -28,13 +32,13 @@ export const SideMenu = ({ isOpen, setOpen }: Props) => {
                 </div>
                 <div className='bg-[white] w-[30vw] sm:w-[50vw] h-[20vh] flex flex-col text-[20px] justify-between p-[10px] rounded-[20px] shadow-sm shadow-black sm:text-[13px]'>
                     <div>
-                        ID: <a className='text-[red] underline'>wodyd1318@naver.com</a>
+                        ID: <a className='text-[red] underline'>{userState.email}</a>
                     </div>
                     <div>
-                        Nickname: <a className='text-[red] underline'>최재용</a>
+                        Nickname: <a className='text-[red] underline'>{userState.username}</a>
                     </div>
                     <div>
-                        Kiosk number:<a className='text-[red] underline'>3개</a>
+                        Kiosk number:<a className='text-[red] underline'>{userState.kiosk.toString()}</a>
                     </div>
                 </div>
                 <div className='flex w-[30vw] sm:w-[50vw] h-[80vh] flex-col mt-[10px]'>
@@ -47,12 +51,12 @@ export const SideMenu = ({ isOpen, setOpen }: Props) => {
                         {isDetailOpen == "products" &&
                             <div>
                                 <div className='text-[20px] sm:text-[15px]'>
-                                    <span className='cursor-pointer' onClick={() => navigate("/products")}>
+                                    <span className='cursor-pointer' onClick={() => navigate("products")}>
                                         음료 등록
                                     </span>
                                 </div>
                                 <div className='text-[20px] sm:text-[15px]'>
-                                    <span className='cursor-pointer' onClick={() => navigate("/options")}>
+                                    <span className='cursor-pointer' onClick={() => navigate("options")}>
                                         옵션 등록
                                     </span>
                                 </div>
@@ -68,16 +72,16 @@ export const SideMenu = ({ isOpen, setOpen }: Props) => {
                         {isDetailOpen == "sales" &&
                             <>
                                 <div className='text-[20px] sm:text-[15px]'>
-                                    종합 매출
+                                    <span className='cursor-pointer' onClick={() => navigate("totalsales")}>종합 매출</span>
                                 </div>
                                 <div className='text-[20px] sm:text-[15px]'>
-                                    카드 매출
+                                    <span className='cursor-pointer' onClick={() => navigate("cardsales")}>카드 매출</span>
                                 </div>
                                 <div className='text-[20px] sm:text-[15px]'>
-                                    페이 매출
+                                    <span className='cursor-pointer' onClick={() => navigate("paysales")}>페이 매출</span>
                                 </div>
                                 <div className='text-[20px] sm:text-[15px]'>
-                                    상품권 매출
+                                    <span className='cursor-pointer' onClick={() => navigate("papersales")}>상품권 매출</span>
                                 </div>
                             </>
                         }
@@ -91,17 +95,17 @@ export const SideMenu = ({ isOpen, setOpen }: Props) => {
                         {isDetailOpen == "kiosks" &&
                             <>
                                 <div className='text-[20px] sm:text-[15px]'>
-                                    키오스크 등록
+                                    <span className='cursor-pointer' onClick={() => navigate("kiosk")}>키오스크 등록</span>
                                 </div>
                                 <div className='text-[20px] sm:text-[15px]'>
-                                    QR 등록
+                                    <span className='cursor-pointer' onClick={() => navigate("qr")}>QR 등록</span>
                                 </div>
                             </>
                         }
                     </div>
                     <div className='flex flex-col'>
-                        <div className='flex flex-row mt-[10vh] sm:text-[20px] cursor-pointer' onClick={() => navigate("login")}>
-                            로그아웃
+                        <div className='flex flex-row mt-[10vh] sm:text-[20px]' onClick={() => navigate("login")}>
+                            <span className='cursor-pointer' onClick={() => navigate("login")}>로그아웃</span>
                         </div>
 
                     </div>
